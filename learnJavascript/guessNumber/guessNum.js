@@ -75,5 +75,5 @@ function endGame() {
     newGame()
 }
 function newGame() {
-
+    const newGamebtn = document.querySelector('#newGame')
 }
