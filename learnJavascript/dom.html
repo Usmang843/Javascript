@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!-- window->document->html->[head->[title->textNode,meta->attribute], body->[div[attribute]->[h1->[textnode],p[textNode]]]] -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DOM Manipulation</title>
+    <style>
+      .bgColor {
+        background-color: #212121;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body class="bgColor">
+    <div>
+      <!-- <h1 class="heading" id="title">DOM Manipulation Learning <span style="display: none;">by Usman Ur Rehman</span>
+        </h1>
+        <h2 class="heading" id="title">DOM Manipulation Learning <span style="display: none;">by Usman Ur Rehman</span>
+        </h2>
+        <h1 class="heading" id="title">DOM Manipulation Learning <span style="display: none;">by Usman Ur Rehman</span>
+        </h1>
+        <h2 class="heading" id="title">DOM Manipulation Learning <span style="display: none;">by Usman Ur Rehman</span>
+        </h2>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <ul>
+            <li class="li-item">one</li>
+            <li class="li-item">two</li>
+            <li class="li-item">three</li>
+            <li class="li-item">four</li>
+        </ul>
+         -->
+      <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+      </div>
+    </div>
+    <ul class="language">
+      <li>Javascript</li>
+    </ul>
+    <script>
+      function addlang(langName) {
+        const liitem = document.createElement("li");
+        liitem.innerHTML = `${langName}`;
+        document.querySelector(".language").appendChild(liitem);
+      }
+      addlang("python");
+      addlang("typescript");
+      
+      // optimized code used below code
+      function addoplang(langName) {
+        const liitem = document.createElement("li");
+        liitem.appendChild(document.createTextNode(langName));
+        document.querySelector(".language").appendChild(liitem);
+      }
+      addoplang("php");
+      const seclang = document.querySelector('li:nth-child(2)')
+      // seclang.innerHTML = "Usman"
+      const newl = document.createElement('li')
+      newl.textContent = "Usman Ur Rehman"
+      seclang.replaceWith(newl)
+      // edit 
+      const firstlg = document.querySelector('li:first-child')
+      firstlg.outerHTML = '<li>Node JS</li>'
+      // remove
+      const lastlg = document.querySelector('li:last-child')
+      lastlg.remove();
+
+      {
+        const parent = document.querySelector(".parent");
+        // console.log(parent)
+        // console.log(parent.children);
+        // console.log(parent.children[1].innerHTML);
+        for (let i = 0; i < parent.children.length; i++) {
+          // console.log(parent.children[i].innerHTML)
+        }
+        // parent.children[1].style.color = "orange"
+        // console.log(parent.firstElementChild);
+        // console.log(parent.lastElementChild);
+        const dyone = document.querySelector(".day");
+        // console.log(dyone.parentElement);
+        // console.log(dyone.nextElementSibling);
+        // console.log("Nodes: ", parent.childNodes);
+
+        const div = document.createElement("div");
+        console.log("div");
+        div.className = "main";
+        div.id = Math.round(Math.random() * 10 + 1);
+        div.setAttribute("title", "generated title");
+        div.style.backgroundColor = "blue";
+        div.style.padding = "12px";
+        div.innerText = "Usman Ur Rehman";
+        // const addtxt = document.createTextNode("Usman Ur Rehman")
+        // div.appendChild(addtxt);
+        // document.body.appendChild(div)
+      }
+    </script>
+  </body>
+</html>
+<!-- 
+innerText -> return only text not return hidden text
+textContent -> return all the text in the element
+innerHTML -> return with element in the element
+
+HTML Collection have to convert to set attributes first convert into array.from() 
+NodeList is the collection of array like structure not an array
+
+
+
+-->
