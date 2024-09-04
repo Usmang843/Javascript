@@ -12,8 +12,58 @@
     </style>
   </head>
   <body class="bgColor">
+    
+    <!--  
+    <h2>Images</h2>
     <div>
-      <!-- <h1 class="heading" id="title">DOM Manipulation Learning <span style="display: none;">by Usman Ur Rehman</span>
+      <ul id="images">
+        <li>
+          <img
+            width="200px"
+            height="200px"
+            id="liveWalpaper1"
+            src="https://i.pinimg.com/originals/fb/a7/e9/fba7e90aae11ba301fe88f9da2a35875.jpg"
+            alt="liveWalpaper"
+          />
+        </li>
+        <li>
+          <br /><img
+            width="200px"
+            height="200px"
+            id="liveWalpaper2"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIWuLlH9mhYx4VhEi-1Ub8TBZ9kotTAP-lVQ&s"
+            alt=""
+          />
+        </li>
+        <li>
+          <br /><img
+            width="200px"
+            height="200px"
+            id="liveWalpaper3"
+            src="https://w0.peakpx.com/wallpaper/364/766/HD-wallpaper-rogphone-855-plus-asus-rog-phone-rog-phone-thumbnail.jpg"
+            alt="liveWalpaper"
+          />
+        </li>
+        <li>
+          <br /><img
+            width="200px"
+            height="200px"
+            id="liveWalpaper4"
+            src="https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            alt="liveWalpaper"
+          />
+        </li>
+        <li>
+          <a style="color: blue" href="https://www.google.com/" id="google"
+            >Google</a
+          >
+        </li>
+      </ul>
+    </div>
+ -->
+    <!--
+    <div>
+       <h1 class="heading" id="title">DOM Manipulation Learning <span style="display: none;">by Usman Ur Rehman</span>
         </h1>
         <h2 class="heading" id="title">DOM Manipulation Learning <span style="display: none;">by Usman Ur Rehman</span>
         </h2>
@@ -28,7 +78,7 @@
             <li class="li-item">three</li>
             <li class="li-item">four</li>
         </ul>
-         -->
+         
       <div class="parent">
         <div class="day">Monday</div>
         <div class="day">Tuesday</div>
@@ -39,62 +89,105 @@
     <ul class="language">
       <li>Javascript</li>
     </ul>
+    -->
     <script>
-      function addlang(langName) {
-        const liitem = document.createElement("li");
-        liitem.innerHTML = `${langName}`;
-        document.querySelector(".language").appendChild(liitem);
-      }
-      addlang("python");
-      addlang("typescript");
-      
-      // optimized code used below code
-      function addoplang(langName) {
-        const liitem = document.createElement("li");
-        liitem.appendChild(document.createTextNode(langName));
-        document.querySelector(".language").appendChild(liitem);
-      }
-      addoplang("php");
-      const seclang = document.querySelector('li:nth-child(2)')
-      // seclang.innerHTML = "Usman"
-      const newl = document.createElement('li')
-      newl.textContent = "Usman Ur Rehman"
-      seclang.replaceWith(newl)
-      // edit 
-      const firstlg = document.querySelector('li:first-child')
-      firstlg.outerHTML = '<li>Node JS</li>'
-      // remove
-      const lastlg = document.querySelector('li:last-child')
-      lastlg.remove();
+      /*
+      // below it's not right approach we can use eventlistener
+      // document.getElementById('liveWalpaper1').onclick = function(){
+      //   alert("Mobile walpaper")
+      // }
+      // below it's right approach we can use
 
-      {
-        const parent = document.querySelector(".parent");
-        // console.log(parent)
-        // console.log(parent.children);
-        // console.log(parent.children[1].innerHTML);
-        for (let i = 0; i < parent.children.length; i++) {
-          // console.log(parent.children[i].innerHTML)
-        }
-        // parent.children[1].style.color = "orange"
-        // console.log(parent.firstElementChild);
-        // console.log(parent.lastElementChild);
-        const dyone = document.querySelector(".day");
-        // console.log(dyone.parentElement);
-        // console.log(dyone.nextElementSibling);
-        // console.log("Nodes: ", parent.childNodes);
+      document.getElementById("liveWalpaper1").addEventListener(
+        "click",
+        (e) => {
+          //  console.log(e) // learn type, timestamp, defaultPrevented,
+          //  console.log(e.target) // target, toElement, srcElement, currentTarget,
+          // clientX, clientY, screenX, screenY, altkey, ctrlkey, shiftkey, keyCode
+          //
+          console.log("clicked mobile walpaper");
+        },
+        false
+      ); // false is default value
+      // Event bubbling and evnet capturing
+      document.getElementById("images").addEventListener("click", (e) => {
+        // console.log("clicked inside the ul");
+        // e.stopPropagation()// stop bubbling
+      }); // false is bubbling which is child and upper elements
+      // document.getElementById("images").addEventListener(
+      //   "click",
+      //   (e) => {
+      //     console.log("clicked inside the ul");
+      //   },
+      //   true
+      // ); // true is capturing which is first parent and afterwards child
+      document.getElementById("images").addEventListener("click", (e) => {
+        // console.log("clicked inside the ul");
+      });
+      document.getElementById("google").addEventListener("click", (e) => {
+        console.log("Google Clicked");
+        // e.stopPropagation() // stop bubbling up the ul
+        e.preventDefault();
+      });
+      */
+      /*
+           function addlang(langName) {
+             const liitem = document.createElement("li");
+             liitem.innerHTML = `${langName}`;
+             document.querySelector(".language").appendChild(liitem);
+           }
+           addlang("python");
+           addlang("typescript");
 
-        const div = document.createElement("div");
-        console.log("div");
-        div.className = "main";
-        div.id = Math.round(Math.random() * 10 + 1);
-        div.setAttribute("title", "generated title");
-        div.style.backgroundColor = "blue";
-        div.style.padding = "12px";
-        div.innerText = "Usman Ur Rehman";
-        // const addtxt = document.createTextNode("Usman Ur Rehman")
-        // div.appendChild(addtxt);
-        // document.body.appendChild(div)
-      }
+           // optimized code used below code
+           {
+           function addoplang(langName) {
+             const liitem = document.createElement("li");
+             liitem.appendChild(document.createTextNode(langName));
+             document.querySelector(".language").appendChild(liitem);
+           }
+           addoplang("php");
+           const seclang = document.querySelector('li:nth-child(2)')
+           // seclang.innerHTML = "Usman"
+           const newl = document.createElement('li')
+           newl.textContent = "Usman Ur Rehman"
+           seclang.replaceWith(newl)
+           // edit
+           const firstlg = document.querySelector('li:first-child')
+           firstlg.outerHTML = '<li>Node JS</li>'
+           // remove
+           const lastlg = document.querySelector('li:last-child')
+           lastlg.remove();
+         }
+           {
+             const parent = document.querySelector(".parent");
+             // console.log(parent)
+             // console.log(parent.children);
+             // console.log(parent.children[1].innerHTML);
+             for (let i = 0; i < parent.children.length; i++) {
+               // console.log(parent.children[i].innerHTML)
+             }
+             // parent.children[1].style.color = "orange"
+             // console.log(parent.firstElementChild);
+             // console.log(parent.lastElementChild);
+             const dyone = document.querySelector(".day");
+             // console.log(dyone.parentElement);
+             // console.log(dyone.nextElementSibling);
+             // console.log("Nodes: ", parent.childNodes);
+
+             const div = document.createElement("div");
+             console.log("div");
+             div.className = "main";
+             div.id = Math.round(Math.random() * 10 + 1);
+             div.setAttribute("title", "generated title");
+             div.style.backgroundColor = "blue";
+             div.style.padding = "12px";
+             div.innerText = "Usman Ur Rehman";
+             // const addtxt = document.createTextNode("Usman Ur Rehman")
+             // div.appendChild(addtxt);
+             // document.body.appendChild(div)
+           }
+      */
     </script>
   </body>
 </html>
@@ -105,7 +198,6 @@ innerHTML -> return with element in the element
 
 HTML Collection have to convert to set attributes first convert into array.from() 
 NodeList is the collection of array like structure not an array
-
 
 
 -->
