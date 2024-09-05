@@ -7,11 +7,35 @@
   </head>
   <body>
     <h1>Task Events</h1>
+    <button id="start">START Time</button>
     <button id="stop">STOP Time</button>
     <script>
-        setTimeout(function(){
-            console.log('Usman Ur Rehman!')
-        },2000) // 2 secs
+      let strtInterval = "";
+      const printDate = function (str) {
+        console.log(str, Date.now());
+      };
+      document.querySelector("#start").addEventListener("click", () => {
+        strtInterval = setInterval(printDate, 1000, "Hello Usman"); // continuously return the value given
+        console.log(strtInterval)
+      });
+      document.querySelector("#stop").addEventListener("click", () => {
+        clearInterval(strtInterval);
+        console.log("Time Stopped");
+      });
+      // setTimeOut is taken handler function
+      const printName = function () {
+        // console.log("Usman Ur Rehman!");
+      };
+      setTimeout(printName, 2000); // 2 secs // give fn without paranthesis which shows reference not fn
+      const chngTxt = function () {
+        document.querySelector("h1").innerHTML = "Time Interval Task";
+      };
+      const returnTxt = setTimeout(chngTxt, 2000);
+
+      //   document.querySelector("#stop").addEventListener("click", () => {
+      //     clearTimeout(returnTxt);
+      //     console.log("Stopped");
+      //   });
     </script>
   </body>
 </html>
