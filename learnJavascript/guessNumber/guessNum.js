@@ -29,6 +29,7 @@ function validGuess(guess) {
   } else {
     prevGuess.push(guess);
     displayGuess(guess);
+
     if (!chkNum(guess) && numGuesses > 10) {
       display(`Game Over, Random Number was ${rndNum}`);
       endGame();
