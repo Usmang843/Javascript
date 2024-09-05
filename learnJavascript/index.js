@@ -672,9 +672,24 @@ const shoppingCart = [
   {
     itemName: "cap",
     price: 150,
-  }
+  },
 ];
-const priceToPay = shoppingCart.reduce((acc, item) => acc + item.price ,0)
+const priceToPay = shoppingCart.reduce((acc, item) => acc + item.price, 0);
 
-// console.log(priceToPay)
+// console.log(priceToPay)timeout
 
+/**************** Promise is an object representing the eventual completion or failure of an asynchronous operation
+ *  ******************/
+
+const promise1 = new Promise(function (resolve, reject) {
+  // Do an async task-> DB calls, cryptography, network
+
+  setTimeout(() => {
+    console.log("aync task is completed");
+  }, 1000);
+
+});
+promise1.then(()=>{
+  console.log('Promise consumed');
+  
+}) //direction connection to resolve
