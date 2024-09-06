@@ -1,5 +1,9 @@
 "use strict";
-
+/*
+No, Java and JavaScript are distinct languages.
+Their similarity in name is coincidental, much like car and carpet.
+ Java is often used for backend and mobile apps, while JavaScript powers web interactivity and backend.
+*/
 // alert(3 + 3); // we are using nodejs, not browser
 
 // console.log(3 + 3);
@@ -31,6 +35,66 @@ const min = 10,
 
 // let newDate = new Date()
 // console.log(newDate.toLocalString())
+
+// (...) speard operator-> it allows the elements in array or properties of an object to be expended or spread into individual elements and properties
+const roadmaps = ["JavaScript", "React", "Node.js"];
+const bestPractices = ["AWS", "API Security"];
+
+const resources = [...roadmaps, ...bestPractices];
+// console.log(resources); // ['JavaScript', 'React', 'Node.js', 'AWS', 'API Security']
+
+const roadmap1 = {
+  name: 'JavaScript',
+  type: 'dynamic',
+};
+
+const roadmapClone = { ...roadmap1 }; // shallow copy
+// console.log(roadmapClone); // { name: 'JavaScript', type: 'dynamic' }
+
+//find unique values in the array
+
+//Use of Set() method
+// const roadmaps = ['JavaScript', 'React', 'Node.js', 'Node.js', 'JavaScript'];
+// const uniqueRoadmaps = [...new Set(roadmaps)];
+// console.log(uniqueRoadmaps); // ['JavaScript', 'React', 'Node.js']
+
+//Use of filter
+
+// const roadmaps = ['JavaScript', 'React', 'Node.js', 'Node.js', 'JavaScript'];
+// const uniqueRoadmaps = roadmaps.filter(
+//   (roadmap, index) => roadmaps.indexOf(roadmap) === index
+// );
+// console.log(uniqueRoadmaps); // ['JavaScript', 'React', 'Node.js']
+
+// use of reduce
+
+// const roadmaps = ['JavaScript', 'React', 'Node.js', 'Node.js', 'JavaScript'];
+// const uniqueRoadmaps = roadmaps.reduce((unique, roadmap) => {
+//   return unique.includes(roadmap) ? unique : [...unique, roadmap];
+// }, []);
+// console.log(uniqueRoadmaps); // ['JavaScript', 'React', 'Node.js']
+
+// use of foreach
+
+// const roadmaps = ['JavaScript', 'React', 'Node.js', 'Node.js', 'JavaScript'];
+// const uniqueRoadmaps = [];
+// roadmaps.forEach((roadmap) => {
+//   if (!uniqueRoadmaps.includes(roadmap)) {
+//     uniqueRoadmaps.push(roadmap);
+//   }
+// });
+// console.log(uniqueRoadmaps); // ['JavaScript', 'React', 'Node.js']
+
+// use of for-of
+
+// const roadmaps = ['JavaScript', 'React', 'Node.js', 'Node.js', 'JavaScript'];
+// const uniqueRoadmaps = [];
+// for (const roadmap of roadmaps) {
+//   if (!uniqueRoadmaps.includes(roadmap)) {
+//     uniqueRoadmaps.push(roadmap);
+//   }
+// }
+// console.log(uniqueRoadmaps); // ['JavaScript', 'React', 'Node.js']
 
 const myArr = [0, 1, 2, 3, 4, 5, 6];
 
@@ -502,8 +566,10 @@ for (const name of myName) {
   // console.log(name);
 }
 
-// Maps in Javascript
-
+// Maps in Javascript -> doesn't mutate the original array it returns a new array
+// map create a new array with the result of calling a provided function on every element in calling array, differ with: foreach, differ with : reduce
+// foreach executes a provided fn once for every array element
+// reduce execute a reducer fn on each element of the array and resulting into a signle output
 const map = new Map();
 map.set("fname", "usman");
 map.set("mname", "ur");
@@ -540,6 +606,10 @@ for (const key in map) {
 // console.log(myarray);
 
 // myarray.forEach(function (){}) is callback function didn't have name
+// foreach()-> doesn't return a new array
+
+// Callback hell-> it often arises when performing multiple asynchronous operations that depend on the completion of previos operation
+// can resolve by promise chaining and async/await
 
 myarray.forEach(function (item) {
   // console.log(item);
@@ -588,6 +658,8 @@ const val = myarray.forEach((item) => {
 
 // console.log(myArr);
 // console.log(myarray);
+
+// filter()-> filter an array based on condition, creates a new array
 
 // const numg4 = myArr.filter((num)=> num > 4)
 // const numg4 = myArr.filter((num)=> {num > 4}) // returns empty array
@@ -652,7 +724,7 @@ const newNumber = myArr // chaining of an array
 // console.log(newNumber)
 
 // console.log(myArr)
-
+// reduce an array to a single value,
 const totalArr = myArr.reduce((acc, currVal) => {
   // console.log(`acc: ${acc} and currVal: ${currVal}`);
 
@@ -679,11 +751,14 @@ const priceToPay = shoppingCart.reduce((acc, item) => acc + item.price, 0);
 // console.log(priceToPay)timeout
 
 /**************** Promise is an object representing the eventual completion or failure of an asynchronous operation
+Promise represents a value that may not be available yet but will be at some point, to handle asynchronous operation 
+
+
  *  ******************/
 
 const promise1 = new Promise(function (resolve, reject) {
   // Do an async task-> DB calls, cryptography, network
-
+  //
   setTimeout(() => {
     // console.log("aync task 1 is completed");
     resolve();
@@ -748,7 +823,8 @@ const promise5 = new Promise(function (resolve, reject) {
     }
   }, 1000);
 });
-
+// async/await returns more readable and cleaner way to handle asynchronous operations compared to callback and promises,
+// async function always return a promise, and within such a function you can use await to pause execution until promise settles
 async function consumedPromise5() {
   try {
     const response = await promise5; // promise5 is an object, async await doesn't catch error directly
@@ -810,10 +886,34 @@ const userss2 = new usrnamess("usman ur rehman", 6, false);
 function multply(num) {
   return num * 4;
 }
+// when a property or method is accessed on an object, it first check the object itself
+// if it doesn't find it, it looks up the property and method in the object prototype
 multply.power = 6;
 // console.log(multply(4));
 // console.log(multply.power);
 // console.log(multply.prototype);
+
+const roadmap = {
+  getRoadmapUrl() {
+    console.log(`https://roadmap.sh/${this.slug}`);
+  },
+};
+
+const javascript = {
+  name: "JavaScript Roadmap",
+  description: "Learn JavaScript",
+  slug: "javascript",
+  greet() {
+    console.log(`${this.name} - ${this.description}`);
+  },
+};
+
+// Object.setPrototypeOf(javascript, roadmap); // or javascript.__proto__ = roadmap;
+// Object.setPrototypeOf(roadmap, javascript); // or roadmap.__proto__ = javacsript;
+
+// javascript.getRoadmapUrl(); // https://roadmap.sh/javascript
+// javascript.greet(); // JavaScript Roadmap - Learn JavaScript
+// roadmap.greet() //JavaScript Roadmap - Learn JavaScript
 
 function createUsr(usr, score) {
   this.usr = usr;
@@ -861,20 +961,75 @@ Object.prototype.printusman = function () {
 
 // myNameis.printusman(); // string have function which is defined by object because String is also an object
 
-Array.prototype.checkingPower = function(){
-  console.log('Checking giving power to power can we access through object');
-  
-}
+Array.prototype.checkingPower = function () {
+  console.log("Checking giving power to power can we access through object");
+};
 // myfullnamearr.checkingPower() // array have an access because we give power and add to array
-// myPower.checkingPower() // didn't have access to object becaues we give and add to array 
+// myPower.checkingPower() // didn't have access to object becaues we give and add to array
 
-
-let addingfn = 'Usman Ur Rehman     '
-String.prototype.trueLength = function(){
+let addingfn = "Usman Ur Rehman     ";
+String.prototype.trueLength = function () {
   console.log(`${this}`); // return the value of string
-  console.log(`True length is: ${this.trim().length}`) ;
-}
+  console.log(`True length is: ${this.trim().length}`);
+};
 
 // addingfn.trueLength();
-'usmanurrehman  '.trueLength()
+// 'usmanurrehman  '.trueLength()
+/* create my own event listener
+const event = new CustomEvent("myeventClick", {
+  detail: {
+    name: "usman ur rehman",
+  },
+});
 
+element.dispatchEvent(event);
+element.addEventListener("roadmap-updated", (event) => {
+  console.log(event.detail); // { name: 'JavaScript' }
+});
+function handleEvent(event) {
+  console.log(event.detail); // { name: 'JavaScript' }
+}
+
+element.addEventListener("roadmap-updated", handleEvent);
+element.removeEventListener("roadmap-updated", handleEvent);
+*/
+
+/*************** Inhertitance 
+class Roadmap {
+  constructor(name, description, slug) {
+    this.name = name;
+    this.description = description;
+    this.slug = slug;
+  }
+
+  getRoadmapUrl() {
+    console.log(`https://roadmap.sh/${this.slug}`);
+  }
+}
+
+class JavaScript extends Roadmap {
+  constructor(name, description, slug) {
+    super(name, description, slug);
+  }
+
+  greet() {
+    console.log(`${this.name} - ${this.description}`);
+  }
+}
+
+const js = new JavaScript(
+  'JavaScript Roadmap',
+  'Learn JavaScript',
+  'javascript'
+);
+
+js.getRoadmapUrl(); // https://roadmap.sh/javascript
+js.greet(); // JavaScript Roadmap - Learn JavaScript 
+
+ */
+
+/*
+alert()-> display an alert box with the specified message
+prompt()-> display a dialogue box that prompt the visitor for input,if not entered any value it provide null
+confirm()-> display a dialogue box with a specified message along with OK and Cancel button
+*/
