@@ -685,11 +685,84 @@ const promise1 = new Promise(function (resolve, reject) {
   // Do an async task-> DB calls, cryptography, network
 
   setTimeout(() => {
-    console.log("aync task is completed");
+    // console.log("aync task 1 is completed");
+    resolve();
   }, 1000);
-
 });
-promise1.then(()=>{
-  console.log('Promise consumed');
-  
-}) //direction connection to resolve
+promise1.then(() => {
+  // console.log('Promise consumed');
+}); //direction connection to resolve
+// Below is same as above but there is difference where we don't separetely defined then
+
+new Promise((resolve, reject) => {
+  setTimeout(() => {
+    // console.log("Async Task 2");
+    resolve();
+  }, 1000);
+}).then(() => {
+  // console.log("Async 2 Resolved");
+});
+
+const promise3 = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    resolve({ name: "usman", email: "usman1urrehman2@gmail.com" });
+  }, 1000);
+}).then(function (user) {
+  // console.log(user)
+});
+
+const promise4 = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    let err = false;
+    if (!err) {
+      resolve({ name: "usman", password: "usman123" });
+    } else {
+      reject("Error: Somethig went wrong");
+    }
+  }, 1000);
+});
+
+const usrname = promise4
+  .then((usr) => {
+    // console.log(usr); // returns error because of rejection err is ture
+    return usr.name;
+  })
+  .then((name) => {
+    // console.log(name);
+  })
+  .catch(function (err) {
+    // console.log(err);
+  })
+  .finally(() => {
+    // console.log('The Promise is either resolved or rejected successfully ' ); // default final
+  });
+// console.log(usrname);
+
+const promise5 = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    let err = true;
+    if (!err) {
+      resolve({ name: "javacript", password: "1234" });
+    } else {
+      reject("Error: JS went wrong!");
+    }
+  }, 1000);
+});
+
+async function consumedPromise5() {
+  try {
+    const response = await promise5; // promise5 is an object, async await doesn't catch error directly
+    // console.log(response);
+  } catch (error) {
+    // console.log(error);
+  }
+}
+
+consumedPromise5();
+
+/*
+JS ENGINE[Memory Heap, Call Stack->calls Web API[DOM API, Set Intervals, ],Fetch() OR priority[micro task queue]
+, Registered Call back->taskQueue[and return to call stack]]
+404 error returns by fetch is also return in response not in rejection
+
+*/
