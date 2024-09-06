@@ -766,3 +766,115 @@ JS ENGINE[Memory Heap, Call Stack->calls Web API[DOM API, Set Intervals, ],Fetch
 404 error returns by fetch is also return in response not in rejection
 
 */
+
+// Object Oriented Programing and Classes in Javascript
+// Object-> Collection of properties and methods, Object literal,
+
+// Constructor Function->Prototypes, Classes, Instances(new, this)
+// Four Pillars-> Abstraction[hides details[fetch()]], Encapsulation[wrapes data], Inheritance[], polymorphism[many form]
+
+const usrV = {
+  // object literals
+  username: "usman ur rehman", // properties
+  loginCount: 4,
+  signedIn: true,
+  getUsrdetl: function () {
+    // methods
+    // console.log('Got user detail from database');
+    // console.log(`UserName: ${username}`); // undefined
+    // console.log(`UserName: ${this.username}`); // this means are working object Or current Cotext
+    // console.log(this); //current Cotext
+  },
+};
+// console.log(usrV.username);
+// console.log(usrV.getUsrdetl());
+// console.log(this); // returns {}, changes with the scope
+
+function usrnamess(usernames, loginCount, isLoggedIn) {
+  this.usernames = usernames;
+  this.loginCount = loginCount;
+  this.isLoggedIn = isLoggedIn;
+  this.greetings = function () {
+    console.log(`Welcome to our programming ${this.usernames}`);
+  };
+  return this;
+}
+
+const userss = new usrnamess("usman", 4, true); // new create empty object and constructor fn through new
+const userss2 = new usrnamess("usman ur rehman", 6, false);
+// console.log(userss.constructor);
+// console.log(userss);
+
+// Array -> object -> null , String -> object -> null, function is working as function but function -> object -> null
+
+function multply(num) {
+  return num * 4;
+}
+multply.power = 6;
+// console.log(multply(4));
+// console.log(multply.power);
+// console.log(multply.prototype);
+
+function createUsr(usr, score) {
+  this.usr = usr;
+  this.score = score;
+}
+createUsr.prototype.increment = function () {
+  this.score++; // which fn calls it will increase the value of the function
+};
+createUsr.prototype.prints = function () {
+  console.log(`Score is ${this.score}`);
+};
+
+// const usman4 = createUsr('usman', 4) // creates error because it's not defined of new var
+const usman6 = new createUsr("usman ur rehman", 6);
+
+// console.log(usman6.prints());
+
+/*
+new object is created, new keyword initiates the creation of a new Javascript object
+prototype is lineked, newly created object gets linked to the prototype property of the constructor fn
+constructor is called
+new object is returned
+*/
+
+// prototype
+
+let myNameis = "usman ur rehman";
+// console.log(myNameis.length);
+
+let myfullnamearr = ["usman", "ur", "rehman"];
+
+let myPower = {
+  usman: "low ",
+  rehman: "more than all",
+  getusmanPower: function () {
+    console.log(`Usman power is ${this.usman}`);
+  },
+};
+Object.prototype.printusman = function () {
+  console.log("Usman is present in all objects");
+};
+// myPower.printusman() // object have function which is defined by object because fn is also an object
+
+// myfullname.printusman() // array have function which is defined by object because array is also an object
+
+// myNameis.printusman(); // string have function which is defined by object because String is also an object
+
+Array.prototype.checkingPower = function(){
+  console.log('Checking giving power to power can we access through object');
+  
+}
+// myfullnamearr.checkingPower() // array have an access because we give power and add to array
+// myPower.checkingPower() // didn't have access to object becaues we give and add to array 
+
+
+let addingfn = 'Usman Ur Rehman     '
+String.prototype.trueLength = function(){
+  console.log(`${this}`); // return the value of string
+  console.log(`True length is: ${this.trim().length}`) ;
+}
+
+// addingfn.trueLength();
+'usmanurrehman  '.trueLength()
+
