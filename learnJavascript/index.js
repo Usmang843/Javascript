@@ -44,8 +44,8 @@ const resources = [...roadmaps, ...bestPractices];
 // console.log(resources); // ['JavaScript', 'React', 'Node.js', 'AWS', 'API Security']
 
 const roadmap1 = {
-  name: 'JavaScript',
-  type: 'dynamic',
+  name: "JavaScript",
+  type: "dynamic",
 };
 
 const roadmapClone = { ...roadmap1 }; // shallow copy
