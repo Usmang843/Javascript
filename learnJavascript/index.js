@@ -752,7 +752,8 @@ const priceToPay = shoppingCart.reduce((acc, item) => acc + item.price, 0);
 
 /**************** Promise is an object representing the eventual completion or failure of an asynchronous operation
 Promise represents a value that may not be available yet but will be at some point, to handle asynchronous operation 
-
+Promise.allSettled() is that Promise.all() rejects immediately if any of the promises reject 
+whereas Promise.allSettled() waits for all of the promises to settle (either resolve or reject) and then returns the result.
 
  *  ******************/
 
