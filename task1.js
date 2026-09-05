@@ -24,3 +24,4 @@ for (let narr of arr) {
     }
 }
 console.log(tarr);
+// console.log(7+5-4+8+6*0)
